@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo IMC</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input {
+            margin: 5px;
+            padding: 10px;
+            width: 150px;
+        }
+        button {
+            padding: 10px;
+        }
+        h2 {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <form action="" onsubmit="calcular_imc(event)">
+        <label for="altura">Altura (m):</label>
+        <input type="number" name="altura" id="altura" step="0.01" min="0" required>
+        <label for="peso">Peso (kg):</label>
+        <input type="number" name="peso" id="peso" step="0.1" min="0" required>
+        <button type="submit">Calcular IMC</button>
+    </form>
+    <h2 id="resu"></h2>
+
+    <script type="text/javascript">
+        function calcular_imc(event) {
+            event.preventDefault();
+            var altura = parseFloat(document.getElementById("altura").value);
+            var peso = parseFloat(document.getElementById("peso").value);
+
+            if (altura > 0) {
+                var imc = peso / (altura * altura);
+                document.getElementById("resu").innerText = "Tu IMC es: " + imc.toFixed(2);
+            } else {
+                document.getElementById("resu").innerText = "Por favor, ingresa una altura válida.";
+            }
+        }
+    </script>
+</body>
+</html>
